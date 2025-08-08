@@ -4,6 +4,7 @@ import com.mysite.sbb.question.entity.Question;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,9 +35,10 @@ class QuestionRepositoryTest {
     Question savedQuestion2 = questionRepository.save(question2);
     System.out.println("savedQuestion2 = " + savedQuestion2);
     assertNotNull(savedQuestion2.getId());
-    assertEquals("test subject", savedQuestion2.getSubject());
+    assertEquals("sbb가 무엇인가요?", savedQuestion2.getSubject());
   }
 
+  @Transactional
   @Test
   void testFindAll() {
     List<Question> questionList = questionRepository.findAll();
@@ -44,7 +46,7 @@ class QuestionRepositoryTest {
     assertEquals(2, questionList.size());
 
     Question question = questionList.get(0);
-    assertEquals("test subject", question.getSubject());
+    assertEquals("sbb가 무엇인가요?", question.getSubject());
 
   }
 }
