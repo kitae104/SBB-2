@@ -1,5 +1,6 @@
 package com.mysite.sbb.answer.controller;
 
+import com.mysite.sbb.answer.service.AnswerService;
 import com.mysite.sbb.question.entity.Question;
 import com.mysite.sbb.question.service.QuestionService;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AnswerController {
 
   private final QuestionService questionService;
+  private final AnswerService answerService;
 
   @PostMapping("/create/{id}")
-  public String createAnswer(@PathVariable Long id, @RequestParam("content") String content) {
+  public String createAnswer(@PathVariable Long id, @RequestParam(value = "content") String content) {
     Question question = questionService.getQuestion(id);
-    // TODO: 답변 저장 기능
+    answerService.create(question, content);
     log.info("Creating answer for question ID: {}, content: {}", id, content);
     return "redirect:/question/detail/" + id;
   }
