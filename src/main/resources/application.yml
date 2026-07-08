@@ -3,18 +3,12 @@
 ####################################
 server:
   port: 8080                    # 포트 번호
-  servlet:
-    encoding:
-      charset: UTF-8
-      force: true
 
 spring:
   application:
     name: SBB
 
   devtools:
-    livereload:
-      enabled: true
     restart:
       enabled: true
 
@@ -25,13 +19,13 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sbb_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false
     username: root
-    password: 1111
+    password: 1234
 
   ####################################
   # JPA 설정
   ####################################
   jpa:
-    open-in-view: true      #
+    open-in-view: true      # JPA 영속성 컨텍스트를 뷰까지 유지할지 여부
     hibernate:
       ddl-auto: update      # create, update, ...
       naming:
@@ -40,3 +34,7 @@ spring:
     properties:
       hibernate:
         format_sql: true    # SQL 포맷팅 여부
+
+  servlet:
+    encoding:
+      charset: UTF-8        # 인코딩 설정
