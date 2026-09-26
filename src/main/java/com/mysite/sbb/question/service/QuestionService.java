@@ -16,7 +16,7 @@ public class QuestionService {
 
   public List<Question> getList() {
     List<Question> questionList = questionRepository.findAll();
-    return questionList;
+    return questionList;  // alt + shift + i (inline variable)로 간략화 가능
   }
 
   public Question getQuestion(Long id) {
