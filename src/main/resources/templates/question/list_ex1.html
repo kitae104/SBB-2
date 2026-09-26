@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Question List</title>
+  <script src="http://localhost:35729/livereload.js?snipver=1"></script>
 </head>
 <body>
   <h1>질문 목록</h1>
@@ -16,7 +17,8 @@
     <tbody>
       <tr th:each="question : ${questionList}">
         <td th:text="${question.subject}"></td>
-        <td th:text="${question.created}"></td>
+<!--        <td th:text="${question.created}"></td>-->
+        <td th:text="${#temporals.format(question.created, 'yyyy-MM-dd HH:mm')}"></td>
       </tr>
     </tbody>
   </table>
