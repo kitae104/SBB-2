@@ -30,14 +30,14 @@ class QuestionRepositoryTest {
 
 //    Question question2 = new Question("test subject", "test content");
         Question question2 = Question.builder()
-                .subject("test subject")
-                .content("test content")
+                .subject("스프링이 어려운가요?")
+                .content("스프링에서 어떤 부분이 어려운가요? ")
                 .build();
         System.out.println("question2 = " + question2);
         Question savedQuestion2 = questionRepository.save(question2);
         System.out.println("savedQuestion2 = " + savedQuestion2);
         assertNotNull(savedQuestion2.getId());
-        assertEquals("sbb가 무엇인가요?", savedQuestion2.getSubject());
+        assertEquals("스프링이 어려운가요?", savedQuestion2.getSubject());
     }
 
     @Transactional
