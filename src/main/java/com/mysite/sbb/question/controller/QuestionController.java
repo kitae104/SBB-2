@@ -16,13 +16,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QuestionController {
 
-  private final QuestionService questionService;
+  private final QuestionService questionService;  // 반드시 final로 선언해야 함
 
   @GetMapping("/list")
   public String list(Model model) {
     List<Question> questionList = questionService.getList();
     model.addAttribute("questionList", questionList);
-    return "question/list_ex2";
+//    model.addAttribute("data", "전달할 데이터"); // 데이터 전달
+    return "question/list_ex1";
   }
 
   @GetMapping("/detail/{id}")
