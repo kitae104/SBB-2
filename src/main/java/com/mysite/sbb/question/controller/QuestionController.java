@@ -30,6 +30,6 @@ public class QuestionController {
   public String detail(@PathVariable("id") Long id, Model model) {
     Question question = questionService.getQuestion(id);
     model.addAttribute("question", question);
-    return "question/detail";
+    return "question/detail_ex2";
   }
 }
