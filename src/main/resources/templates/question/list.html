@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+
+
+<div layout:fragment="content" class="container my-3">
+  <h3 class="mb-4 fw-bold">게시판 목록</h3>
+
+  <!-- 모바일 화면 대응을 위한 반응형 래퍼 -->
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+      <tr>
+        <th scope="col" style="width: 75%;">제목</th>
+        <th scope="col" class="text-center" style="width: 25%;">작성일</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- 1. 게시글 목록이 비어 있을 때 -->
+      <tr th:if="${#lists.isEmpty(questionList)}">
+        <td colspan="2" class="text-center py-4 text-muted">
+          등록된 게시글이 없습니다.
+        </td>
+      </tr>
+
+      <!-- 2. 게시글 목록 반복 출력 -->
+      <tr th:each="question : ${questionList}">
+        <td>
+          <!-- 상세 페이지 이동 링크 (텍스트 밑줄 제거 및 깔끔한 링크 스타일) -->
+          <a th:href="@{/question/{id}(id=${question.id})}"
+             th:text="${question.subject}"
+             class="text-decoration-none text-dark fw-semibold">
+            게시글 제목 예시
+          </a>
+        </td>
+        <td class="text-center text-secondary">
+          <!-- LocalDateTime / LocalDate 타입일 경우 -->
+          <span th:text="${#temporals.format(question.created, 'yyyy-MM-dd HH:mm')}">
+                            2026-10-03 12:00
+                    </span>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</html>
